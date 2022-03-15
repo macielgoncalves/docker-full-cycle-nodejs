@@ -15,6 +15,9 @@ app.get('/', (req,res) => {
     connection.connect(function(err) {
         if (err) throw err;
 
+        const createTable = `create table if not exists people(id int not null auto_increment, name varchar(255), primary key (id))`
+        connection.query(createTable)
+
         const sql = `INSERT INTO people(name) VALUES('Maciel Kamers G.')`
         connection.query(sql)
 
